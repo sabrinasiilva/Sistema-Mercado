@@ -3,110 +3,67 @@ package model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author SABRINA
- */
+/* Model — representa a entidade Produto do mundo real
+   Padrão OO: todos os atributos são PRIVADOS (encapsulamento)
+   Acesso apenas via getters e setters */
 public class Produto {
-    private int id;
-    private LocalDateTime data_cadastro;
+
+    private int id;                      /* gerado automaticamente pelo banco */
     private String nome;
     private String descricao;
     private String categoria;
     private String marca;
-    private String codigo_barras;
-    private double preco_compra;
-    private double preco_venda;
+    private String codigoBarras;
+    private double precoCompra;
+    private double precoVenda;
     private String fornecedor;
-    private int quantidade_estoque;
-    private int quantidade_minimo;
-    private LocalDate data_validade;
+    private int quantidadeEstoque;
+    private int quantidadeMinimo;        /* alerta quando estoque estiver baixo */
+    private LocalDate dataValidade;
     private double peso;
-    
-    public int getId(){
-        return id;
-    }
-    public LocalDateTime getDataCadastro(){
-        return data_cadastro;
-    }
-    
-    public String getNome(){
-        return nome;
-    }
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    public String getDescricao(){
-        return descricao;
-    }
-    public void setDescricao(String descricao){
-        this.descricao = descricao;
-    }
-    public String getCategoria(){
-        return categoria;
-    }
-    public void setCategoria(String categoria){
-        this.categoria = categoria;
-    }
-    
-    public String getMarca(){
-        return marca;
-    }
-    public void setMarca(String marca){
-        this.marca = marca;
-    }
-  public String getCodigoBarras(){                                                                      
-      return codigo_barras;
-  }
-  public void setCodigoBarras(String codigo_barras){
-      this.codigo_barras = codigo_barras;
-  }
-    public void setPrecoCompra(double preco_compra){
-        this.preco_compra = preco_compra;
-    }
-    public double getPrecoCompra(){
-        return preco_compra;
-    }
-    public void setPrecoVenda(double preco_venda){
-        this.preco_venda = preco_venda;
-    }
-    public double getPrecoVenda(){
-        return preco_venda;
-    }
-    public void setFornecedor(String fornecedor){
-        this.fornecedor = fornecedor;
-    }
-    public String getFornecedor(){
-        return fornecedor;
-    }
-    public void setQuantidadeEstoque(int quantidade_estoque){
-        this.quantidade_estoque = quantidade_estoque;
-    }
-    public int getQuantidadeEstoque(){
-        return quantidade_estoque;
-    }
-    public void setQuantidadeMinimo(int quantidade_minimo){
-        this.quantidade_minimo = quantidade_minimo;
-    }
-    public int getQuantidadeMinimo(){
-        return quantidade_minimo;
-    }
+    private LocalDateTime dataCadastro;  /* registrado automaticamente pelo banco */
 
-    public void setDataValidade(LocalDate data_validade){
-        this.data_validade = data_validade;
-    }
-    public LocalDate getDataValidade(){
-        return data_validade;
-    }
-    public void setPeso(double peso){
-        this.peso = peso;
-    }
-    public double getPeso(){
-        return peso;
-    }
+    /* Getters e Setters — único ponto de acesso aos atributos privados */
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public LocalDateTime getDataCadastro() { return dataCadastro; }
+    public void setDataCadastro(LocalDateTime dataCadastro) { this.dataCadastro = dataCadastro; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+
+    public String getMarca() { return marca; }
+    public void setMarca(String marca) { this.marca = marca; }
+
+    public String getCodigoBarras() { return codigoBarras; }
+    public void setCodigoBarras(String codigoBarras) { this.codigoBarras = codigoBarras; }
+
+    public double getPrecoCompra() { return precoCompra; }
+    public void setPrecoCompra(double precoCompra) { this.precoCompra = precoCompra; }
+
+    public double getPrecoVenda() { return precoVenda; }
+    public void setPrecoVenda(double precoVenda) { this.precoVenda = precoVenda; }
+
+    public String getFornecedor() { return fornecedor; }
+    public void setFornecedor(String fornecedor) { this.fornecedor = fornecedor; }
+
+    public int getQuantidadeEstoque() { return quantidadeEstoque; }
+    public void setQuantidadeEstoque(int quantidadeEstoque) { this.quantidadeEstoque = quantidadeEstoque; }
+
+    public int getQuantidadeMinimo() { return quantidadeMinimo; }
+    public void setQuantidadeMinimo(int quantidadeMinimo) { this.quantidadeMinimo = quantidadeMinimo; }
+
+    public LocalDate getDataValidade() { return dataValidade; }
+    public void setDataValidade(LocalDate dataValidade) { this.dataValidade = dataValidade; }
+
+    public double getPeso() { return peso; }
+    public void setPeso(double peso) { this.peso = peso; }
 }
