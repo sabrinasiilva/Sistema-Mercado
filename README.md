@@ -1,6 +1,3 @@
-# Sistema-Mercado
- Sistema Web de gerenciamento de produtos com operações de inserir, consultar, atualizar e deletar
-
 # 🏪 Sistema de Mercado
 
 Aplicação Web de gerenciamento de produtos desenvolvida para a avaliação M2 da disciplina de Implementação Orientada a Objetos — Engenharia de Software 3B.
@@ -39,4 +36,4 @@ Todas as operações do DAO utilizam `PreparedStatement` com parâmetros `?`, ne
 
 ## 👥 Equipe
 
-Desenvolvido por **Gabriel** e **Sabrina** — Turma 3B Engenharia de Software.
+Desenvolvido por **Andy** e **Sabrina** — Turma 3B Engenharia de Software.
