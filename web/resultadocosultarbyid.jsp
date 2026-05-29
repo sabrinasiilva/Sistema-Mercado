@@ -1,4 +1,5 @@
 <%@page import="model.Produto"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -55,6 +56,7 @@
                 <div class="linha"><span>Fornecedor</span><span><%out.print(p.getFornecedor());%></span></div>
                 <div class="linha"><span>Validade</span><span><%out.print(p.getDataValidade());%></span></div>
                 <div class="linha"><span>Peso</span><span><%out.print(p.getPeso());%> kg</span></div>
+                <div class="linha"><span>Data de Cadastro</span><span><%out.print(p.getDataCadastro().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));%></span></div>
             </div>
             <%} else {%>
             <div class="nao-encontrado">Produto não encontrado.</div>

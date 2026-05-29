@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="model.Produto"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -67,6 +68,7 @@
                             <th>Categoria</th>
                             <th>Preço Venda</th>
                             <th>Estoque</th>
+                            <th>Data Cadastro</th>
                             <th>Remover</th>
                             <th>Editar</th>
                         </tr>
@@ -80,6 +82,7 @@
                             <td><%out.print(p.getCategoria());%></td>
                             <td>R$ <%out.print(p.getPrecoVenda());%></td>
                             <td><%out.print(p.getQuantidadeEstoque());%></td>
+                            <td><%out.print(p.getDataCadastro() != null ? p.getDataCadastro().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) : "-");%></td>
                             <td><a class="btn-acao btn-del" href="controle_produto?op=DELETAR&txtid=<%out.print(p.getId());%>">❌ Deletar</a></td>
                             <td><a class="btn-acao btn-edit" href="controle_produto?txtid=<%out.print(p.getId());%>&op=ATUALIZAR">Editar</a></td>
                         </tr>

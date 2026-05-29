@@ -3,8 +3,8 @@ package model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/* Model — representa a entidade Produto do mundo real
-   Padrão OO: todos os atributos são PRIVADOS (encapsulamento)
+/* Model representa a entidade Produto do mundo real
+   Padrão OO.. todos os atributos são PRIVADOS que seria o encapsulamento
    Acesso apenas via getters e setters */
 public class Produto {
 
@@ -23,7 +23,7 @@ public class Produto {
     private double peso;
     private LocalDateTime dataCadastro;  /* registrado automaticamente pelo banco */
 
-    /* Getters e Setters — único ponto de acesso aos atributos privados */
+    /* Getters e Setters único ponto de acesso aos atributos privados */
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

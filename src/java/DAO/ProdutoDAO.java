@@ -9,18 +9,18 @@ import java.util.List;
 import model.Produto;
 import util.Conexao;
 
-/* DAO (Data Access Object) — responsável exclusivamente pela comunicação com o banco
-   O Controller nunca acessa o banco diretamente — sempre passa pelo DAO */
+/* DAO responsável exclusivamente pela comunicação com o banco
+   O Controller nunca acessa o banco diretamente sempre passa pelo DAO */
 public class ProdutoDAO {
 
     public ProdutoDAO() {
     }
 
-    /* INSERT — cadastra um novo produto no banco
-       O ID não é inserido pois é gerado automaticamente pelo banco (auto_increment) */
+    /* INSERT cadastra um novo produto no banco
+       O ID não é inserido pois é gerado automaticamente pelo banco  */
     public void cadastrar(Produto p) throws ClassNotFoundException, SQLException {
         Connection con = Conexao.getConexao();
-        /* PreparedStatement com parâmetros "?" — proteção contra SQL Injection */
+        /* PreparedStatement com parâmetros "?" proteção contra SQL Injection */
         PreparedStatement comando = con.prepareStatement(
             "insert into produtos (nome, descricao, categoria, marca, codigo_barras, " +
             "preco_compra, preco_venda, fornecedor, quantidade_estoque, " +
@@ -37,14 +37,14 @@ public class ProdutoDAO {
         comando.setString(8, p.getFornecedor());
         comando.setInt(9, p.getQuantidadeEstoque());
         comando.setInt(10, p.getQuantidadeMinimo());
-        /* Converte LocalDate para java.sql.Date para salvar no banco */
+        /* converte LocalDate para java.sql.Date para salvar no banco */
         comando.setDate(11, java.sql.Date.valueOf(p.getDataValidade()));
         comando.setDouble(12, p.getPeso());
         comando.execute();
         con.close(); /* sempre fechar a conexão após uso */
     }
 
-    /* DELETE — remove o produto pelo ID */
+    /* DELETE remove o produto pelo ID */
     public void deletar(Produto p) throws ClassNotFoundException, SQLException {
         Connection con = Conexao.getConexao();
         PreparedStatement comando = con.prepareStatement(
@@ -55,7 +55,7 @@ public class ProdutoDAO {
         con.close();
     }
 
-    /* UPDATE — atualiza todos os campos do produto pelo ID
+    /* UPDATE atualiza todos os campos do produto pelo ID
        data_cadastro não é atualizada — foi registrada quando o produto foi criado */
     public void atualizar(Produto p) throws ClassNotFoundException, SQLException {
         Connection con = Conexao.getConexao();
@@ -77,14 +77,14 @@ public class ProdutoDAO {
         comando.setInt(10, p.getQuantidadeMinimo());
         comando.setDate(11, java.sql.Date.valueOf(p.getDataValidade()));
         comando.setDouble(12, p.getPeso());
-        /* ID vai no WHERE — identifica qual produto atualizar */
+        /* ID vai no WHERE identifica qual produto atualizar */
         comando.setInt(13, p.getId());
         comando.execute();
         con.close();
     }
 
-    /* SELECT por ID — retorna um único produto
-       Usa ResultSet para ler o resultado da query */
+    /* SELECT por ID retorna um único produto
+       usa resultSet para ler o resultado da query */
     public Produto consultarById(Produto p) throws ClassNotFoundException, SQLException {
         Connection con = Conexao.getConexao();
         PreparedStatement comando = con.prepareStatement(
@@ -107,11 +107,13 @@ public class ProdutoDAO {
             prod.setQuantidadeMinimo(rs.getInt("quantidade_minimo"));
             prod.setDataValidade(rs.getDate("data_validade").toLocalDate());
             prod.setPeso(rs.getDouble("peso"));
+            if (rs.getTimestamp("data_cadastro") != null)
+                prod.setDataCadastro(rs.getTimestamp("data_cadastro").toLocalDateTime());
         }
         return prod;
     }
 
-    /* SELECT todos — retorna uma lista com todos os produtos do banco */
+    /* SELECT todos retorna uma lista com todos os produtos do banco */
     public List<Produto> consultarTodos() throws ClassNotFoundException, SQLException {
         Connection con = Conexao.getConexao();
         PreparedStatement comando = con.prepareStatement("select * from produtos");
@@ -133,6 +135,12 @@ public class ProdutoDAO {
             java.sql.Date dv = rs.getDate("data_validade");
             if (dv != null) prod.setDataValidade(dv.toLocalDate());
             prod.setPeso(rs.getDouble("peso"));
+            
+            /* data_cadastro é gerado automaticamente pelo banco (DEFAULT CURRENT_TIMESTAMP)
+            usamos Timestamp para ler do ResultSet e convertemos para LocalDateTime do Java */
+            
+            if (rs.getTimestamp("data_cadastro") != null)
+                prod.setDataCadastro(rs.getTimestamp("data_cadastro").toLocalDateTime());
             lprod.add(prod); /* adiciona o produto na lista */
         }
         return lprod;
