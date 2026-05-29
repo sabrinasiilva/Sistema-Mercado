@@ -2,7 +2,7 @@
 
 Aplicação Web de gerenciamento de produtos desenvolvida para a avaliação M2 da disciplina de Implementação Orientada a Objetos — Engenharia de Software 3B.
 
-## 🚀 Tecnologias
+## Tecnologias
 
 - Java + Servlet
 - JSP
@@ -10,7 +10,7 @@ Aplicação Web de gerenciamento de produtos desenvolvida para a avaliação M2 
 - MySQL
 - Apache Tomcat 9
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 O projeto segue rigorosamente os padrões **MVC** e **DAO**:
 
@@ -22,7 +22,7 @@ O projeto segue rigorosamente os padrões **MVC** e **DAO**:
 | DAO | `ProdutoDAO.java` | Único ponto de acesso ao banco de dados |
 | Util | `Conexao.java` | Fábrica de conexão centralizada |
 
-## ⚙️ CRUD
+## CRUD
 
 - ✅ Cadastrar produto
 - ✅ Deletar produto
@@ -30,10 +30,10 @@ O projeto segue rigorosamente os padrões **MVC** e **DAO**:
 - ✅ Consultar por ID
 - ✅ Consultar todos
 
-## 🔒 Segurança
+## Segurança
 
 Todas as operações do DAO utilizam `PreparedStatement` com parâmetros `?`, neutralizando ataques de **SQL Injection** — incluindo tentativas com `' OR 1=1`, `DROP TABLE` e `INSERT` malicioso.
 
-## 👥 Equipe
+## Equipe
 
 Desenvolvido por **Andy** e **Sabrina** — Turma 3B Engenharia de Software.
