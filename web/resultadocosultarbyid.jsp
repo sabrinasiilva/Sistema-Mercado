@@ -22,6 +22,8 @@
             .nao-encontrado { padding: 40px; text-align: center; color: #c62828; font-size: 18px; }
             .btn-voltar { display: block; margin: 24px; text-align: center; background: linear-gradient(90deg, #7f0000, #c62828); color: white; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; }
             footer { text-align: center; padding: 20px; font-size: 12px; color: #000; font-weight: bold; }
+            .btn-home { position: fixed; bottom: 28px; right: 28px; background: linear-gradient(90deg, #7f0000, #c62828); color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: opacity 0.2s; }
+            .btn-home:hover { opacity: 0.85; }
         </style>
     </head>
     <body>
@@ -41,24 +43,25 @@
             </div>
             <%if (p.getNome() != null) {%>
             <div class="info">
-                <div class="linha"><span>ID</span><span><%=p.getId()%></span></div>
-                <div class="linha"><span>Nome</span><span><%=p.getNome()%></span></div>
-                <div class="linha"><span>Descrição</span><span><%=p.getDescricao()%></span></div>
-                <div class="linha"><span>Categoria</span><span><%=p.getCategoria()%></span></div>
-                <div class="linha"><span>Marca</span><span><%=p.getMarca()%></span></div>
-                <div class="linha"><span>Preço Compra</span><span>R$ <%=p.getPrecoCompra()%></span></div>
-                <div class="linha"><span>Preço Venda</span><span>R$ <%=p.getPrecoVenda()%></span></div>
-                <div class="linha"><span>Estoque</span><span><%=p.getQuantidadeEstoque()%> un</span></div>
-                <div class="linha"><span>Estoque Mínimo</span><span><%=p.getQuantidadeMinimo()%> un</span></div>
-                <div class="linha"><span>Fornecedor</span><span><%=p.getFornecedor()%></span></div>
-                <div class="linha"><span>Validade</span><span><%=p.getDataValidade()%></span></div>
-                <div class="linha"><span>Peso</span><span><%=p.getPeso()%> kg</span></div>
+                <div class="linha"><span>ID</span><span><%out.print(p.getId());%></span></div>
+                <div class="linha"><span>Nome</span><span><%out.print(p.getNome());%></span></div>
+                <div class="linha"><span>Descrição</span><span><%out.print(p.getDescricao());%></span></div>
+                <div class="linha"><span>Categoria</span><span><%out.print(p.getCategoria());%></span></div>
+                <div class="linha"><span>Marca</span><span><%out.print(p.getMarca());%></span></div>
+                <div class="linha"><span>Preço Compra</span><span>R$ <%out.print(p.getPrecoCompra());%></span></div>
+                <div class="linha"><span>Preço Venda</span><span>R$ <%out.print(p.getPrecoVenda());%></span></div>
+                <div class="linha"><span>Estoque</span><span><%out.print(p.getQuantidadeEstoque());%> un</span></div>
+                <div class="linha"><span>Estoque Mínimo</span><span><%out.print(p.getQuantidadeMinimo());%> un</span></div>
+                <div class="linha"><span>Fornecedor</span><span><%out.print(p.getFornecedor());%></span></div>
+                <div class="linha"><span>Validade</span><span><%out.print(p.getDataValidade());%></span></div>
+                <div class="linha"><span>Peso</span><span><%out.print(p.getPeso());%> kg</span></div>
             </div>
             <%} else {%>
             <div class="nao-encontrado">Produto não encontrado.</div>
             <%}%>
             <a class="btn-voltar" href="index.html">Voltar ao início</a>
         </div>
-        <footer>CRUD SISTEMA GERENCIADOR DE PRODUTOS &copy; 2025</footer>
+        <footer>Sistema de Mercado — Andy & Sabrina &copy; 2026</footer>
+        <a class="btn-home" href="index.html">🏠 Home</a>
     </body>
 </html>

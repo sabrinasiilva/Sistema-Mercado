@@ -12,12 +12,13 @@
             header span { font-size: 40px; }
             header h1 { font-size: 22px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
             header p { font-size: 12px; opacity: 0.7; }
-            .container { max-width: 540px; margin: 36px auto; background: #f5e6e6; border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); overflow: hidden; border: 1px solid #f5c6c6; }
+            .container { max-width: 800px; margin: 36px auto; background: #f5e6e6; border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); overflow: hidden; border: 1px solid #f5c6c6; }
             .container-header { background: linear-gradient(90deg, #7f0000, #c62828); color: white; padding: 16px 24px; }
             .container-header h2 { font-size: 16px; font-weight: bold; }
             form { padding: 24px; }
+            .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
             .campo { margin-bottom: 16px; }
-            .campo label { display: block; font-size: 12px; font-weight: bold; color: #c62828; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+            .campo label { display: block; font-size: 12px; font-weight: bold; color: #7f0000; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
             .campo input { width: 100%; padding: 10px 14px; border: 1px solid #e0b0b0; border-radius: 6px; font-size: 14px; color: #333; background-color: #fdf2f2; }
             .campo input:focus { outline: none; border-color: #c62828; box-shadow: 0 0 0 3px rgba(198,40,40,0.15); }
             .id-display { font-size: 14px; color: #333; padding: 10px 0; font-weight: bold; }
@@ -26,6 +27,8 @@
             .btn-salvar:hover { opacity: 0.88; }
             .nao-encontrado { padding: 40px; text-align: center; color: #c62828; font-size: 18px; }
             footer { text-align: center; padding: 20px; font-size: 12px; color: #000; font-weight: bold; }
+            .btn-home { position: fixed; bottom: 28px; right: 28px; background: linear-gradient(90deg, #7f0000, #c62828); color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: opacity 0.2s; }
+            .btn-home:hover { opacity: 0.85; }
         </style>
     </head>
     <body>
@@ -45,58 +48,60 @@
             </div>
             <%if (p.getNome() != null) {%>
             <form name="f1" action="controle_produto" method="GET">
-                <input type="hidden" name="txtid" value="<%=p.getId()%>">
+                <input type="hidden" name="txtid" value="<%out.print(p.getId());%>">
                 <div class="campo">
                     <label>ID</label>
-                    <div class="id-display">#<%=p.getId()%></div>
+                    <div class="id-display">#<%out.print(p.getId());%></div>
                 </div>
-                <div class="campo">
-                    <label>Nome</label>
-                    <input type="text" name="txtnome" value="<%=p.getNome()%>">
-                </div>
-                <div class="campo">
-                    <label>Descrição</label>
-                    <input type="text" name="txtdescricao" value="<%=p.getDescricao()%>">
-                </div>
-                <div class="campo">
-                    <label>Categoria</label>
-                    <input type="text" name="txtcategoria" value="<%=p.getCategoria()%>">
-                </div>
-                <div class="campo">
-                    <label>Marca</label>
-                    <input type="text" name="txtmarca" value="<%=p.getMarca()%>">
-                </div>
-                <div class="campo">
-                    <label>Código de Barras</label>
-                    <input type="text" name="txtcodigobarras" value="<%=p.getCodigoBarras()%>">
-                </div>
-                <div class="campo">
-                    <label>Preço Compra (R$)</label>
-                    <input type="text" name="txtprecocompra" value="<%=p.getPrecoCompra()%>">
-                </div>
-                <div class="campo">
-                    <label>Preço Venda (R$)</label>
-                    <input type="text" name="txtprecovenda" value="<%=p.getPrecoVenda()%>">
-                </div>
-                <div class="campo">
-                    <label>Fornecedor</label>
-                    <input type="text" name="txtfornecedor" value="<%=p.getFornecedor()%>">
-                </div>
-                <div class="campo">
-                    <label>Quantidade em Estoque</label>
-                    <input type="text" name="txtquantidadeestoque" value="<%=p.getQuantidadeEstoque()%>">
-                </div>
-                <div class="campo">
-                    <label>Quantidade Mínima</label>
-                    <input type="text" name="txtquantidademinimo" value="<%=p.getQuantidadeMinimo()%>">
-                </div>
-                <div class="campo">
-                    <label>Data de Validade</label>
-                    <input type="text" name="txtdatavalidade" value="<%=p.getDataValidade()%>">
-                </div>
-                <div class="campo">
-                    <label>Peso (kg)</label>
-                    <input type="text" name="txtpeso" value="<%=p.getPeso()%>">
+                <div class="grid2">
+                    <div class="campo">
+                        <label>Nome</label>
+                        <input type="text" name="txtnome" value="<%out.print(p.getNome());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Descrição</label>
+                        <input type="text" name="txtdescricao" value="<%out.print(p.getDescricao());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Categoria</label>
+                        <input type="text" name="txtcategoria" value="<%out.print(p.getCategoria());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Marca</label>
+                        <input type="text" name="txtmarca" value="<%out.print(p.getMarca());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Código de Barras</label>
+                        <input type="text" name="txtcodigobarras" value="<%out.print(p.getCodigoBarras());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Fornecedor</label>
+                        <input type="text" name="txtfornecedor" value="<%out.print(p.getFornecedor());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Preço Compra (R$)</label>
+                        <input type="text" name="txtprecocompra" value="<%out.print(p.getPrecoCompra());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Preço Venda (R$)</label>
+                        <input type="text" name="txtprecovenda" value="<%out.print(p.getPrecoVenda());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Quantidade em Estoque</label>
+                        <input type="text" name="txtquantidadeestoque" value="<%out.print(p.getQuantidadeEstoque());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Quantidade Mínima</label>
+                        <input type="text" name="txtquantidademinimo" value="<%out.print(p.getQuantidadeMinimo());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Data de Validade</label>
+                        <input type="text" name="txtdatavalidade" value="<%out.print(p.getDataValidade());%>">
+                    </div>
+                    <div class="campo">
+                        <label>Peso (kg)</label>
+                        <input type="text" name="txtpeso" value="<%out.print(p.getPeso());%>">
+                    </div>
                 </div>
                 <hr class="divider">
                 <input class="btn-salvar" type="submit" name="op" value="EFETIVAR ATUALIZAÇÃO">
@@ -105,6 +110,7 @@
             <div class="nao-encontrado">Produto não encontrado.</div>
             <%}%>
         </div>
-        <footer>CRUD SISTEMA GERENCIADOR DE PRODUTOS &copy; 2025</footer>
+        <footer>Sistema de Mercado — Andy & Sabrina &copy; 2026</footer>
+        <a class="btn-home" href="index.html">🏠 Home</a>
     </body>
 </html>

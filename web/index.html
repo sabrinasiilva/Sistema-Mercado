@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 function carregarcnsultartodos(){
                 window.location ="/sistema_mercado/controle_prooduto?op=Consultar todos"
                 }
-                
+
         </script>
         
         <style>
@@ -33,6 +33,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             }
 
             header{
+                position: sticky;
+                top: 0;
+                z-index: 100;
                 background: linear-gradient(90deg, #7f0000, #c62828);
                 color: white;
                 padding: 20px 36px;
@@ -57,7 +60,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             }
             .grid2 {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
                 gap: 0 16px;
             }
 
@@ -69,6 +72,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 box-shadow: 0 8px 32px rgba(0,0,0,0.2);
                 overflow: hidden;
                 border: 1px solid #f5c6c6;
+                max-height: 90vh;
+                display: flex;
+                flex-direction: column;
             }
             .container-header {
                 background: linear-gradient(90deg, #7f0000, #c62828);
@@ -100,18 +106,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 box-shadow: 0 0 0 3px rgba(198,40,40,0.15);
             }
             form {
-                padding: 24px;
+                padding: 32px 32px 0 32px;
+                overflow-y: auto;
+                flex: 1;
+            }
+
+            /* scrollbar discreta */
+            form::-webkit-scrollbar {
+                width: 5px;
+            }
+            form::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            form::-webkit-scrollbar-thumb {
+                background: #e0b0b0;
+                border-radius: 10px;
+            }
+
+            .botoes-wrapper {
+                padding: 16px 32px 24px 32px;
+                background: #f5e6e6;
+                border-top: 1px solid #f5c6c6;
             }
 
             .campo {
-                margin-bottom: 16px;
+                margin-bottom: 20px;
             }
 
             .campo label {
                 display: block;
                 font-size: 12px;
                 font-weight: bold;
-                color: #c62828;
+                color: #7f0000;
                 margin-bottom: 6px;
                 text-transform: uppercase;
                 letter-spacing: 1px;
@@ -183,10 +209,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                  <h2>Cadastro de Produtos</h2>
             </div>
              
-             <form name="f1" action="controle_produto" method="GET">
-                 <div class="campo">
-                     <label>ID <small style="color:#aaa;font-weight:normal;">(use para Deletar, Atualizar e Consultar)</small></label>
-                     <input type="text" name="txtid" placeholder="Deixe vazio para cadastrar">
+             <form name="f1" id="f1" action="controle_produto" method="GET">
+                 <div class="campo" style="background:#fdf2f2; border:1px dashed #e0b0b0; border-radius:8px; padding:12px;">
+                     <label style="color:#c62828;">🔑 ID — <small style="font-weight:normal;">preencha apenas para Deletar, Atualizar ou Consultar. Deixe vazio para Cadastrar.</small></label>
+                     <input type="text" name="txtid" placeholder="Ex: 1">
                  </div>
                  <div class="grid2">
                      <div class="campo">
@@ -239,18 +265,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                      </div>
                  </div>
                  
-                 <hr class="divider">
-                 
-                 <div class="botoes">
-                      <input class ="btn-cadastrar" type="submit" name="op" value="CADASTRAR">
-                      <input class ="btn-atualizar" type="submit" name="op" value="ATUALIZAR">
-                      <input class ="btn-deletar" type="submit" name="op" value="DELETAR">
-                      <input class ="btn-byid" type="submit" name="op" value="CONSULTAR BY ID">
-                      <input class ="btn-todos" type="submit" name="op" value="CONSULTAR TODOS">
-                 </div>
             </form>
+            <div class="botoes-wrapper">
+                 <div class="botoes">
+                      <input class ="btn-cadastrar" type="submit" form="f1" name="op" value="CADASTRAR">
+                      <input class ="btn-atualizar" type="submit" form="f1" name="op" value="ATUALIZAR">
+                      <input class ="btn-deletar" type="submit" form="f1" name="op" value="DELETAR">
+                      <input class ="btn-byid" type="submit" form="f1" name="op" value="CONSULTAR BY ID">
+                      <input class ="btn-todos" type="submit" form="f1" name="op" value="CONSULTAR TODOS">
+                 </div>
+            </div>
         </div>
         
-        <footer> CRUD SISTEMA GERENCIADOR DE PRODUTOS & SASA / ANDY </footer>
+        <footer> Sistema de Mercado — Andy & Sabrina &copy; 2026 </footer>
     </body>
 </html>

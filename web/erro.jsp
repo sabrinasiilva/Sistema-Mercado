@@ -17,6 +17,8 @@
             p { color: #555; font-size: 14px; margin-bottom: 24px; }
             a { display: inline-block; background: linear-gradient(90deg, #7f0000, #c62828); color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; }
             footer { text-align: center; padding: 20px; font-size: 12px; color: #000; font-weight: bold; }
+            .btn-home { position: fixed; bottom: 28px; right: 28px; background: linear-gradient(90deg, #7f0000, #c62828); color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: opacity 0.2s; }
+            .btn-home:hover { opacity: 0.85; }
         </style>
     </head>
     <body>
@@ -33,9 +35,10 @@
         <div class="container">
             <div class="icone">❌</div>
             <h2>Falha na operação!</h2>
-            <p><strong><%=msg%></strong> não realizado.</p>
+            <p><strong><%out.print(msg);%></strong> não realizado.</p>
             <a href="index.html">Voltar ao início</a>
         </div>
-        <footer>CRUD SISTEMA GERENCIADOR DE PRODUTOS &copy; 2025</footer>
+        <footer>Sistema de Mercado — Andy & Sabrina &copy; 2026</footer>
+        <a class="btn-home" href="index.html">🏠 Home</a>
     </body>
 </html>
