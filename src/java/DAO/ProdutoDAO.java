@@ -10,7 +10,7 @@ import model.Produto;
 import util.Conexao;
 
 /* DAO responsável exclusivamente pela comunicação com o banco
-   O Controller nunca acessa o banco diretamente sempre passa pelo DAO */
+   o controller nunca acessa o banco diretamente sempre passa pelo DAO */
 public class ProdutoDAO {
 
     public ProdutoDAO() {
@@ -18,14 +18,20 @@ public class ProdutoDAO {
 
     /* INSERT cadastra um novo produto no banco
        O ID não é inserido pois é gerado automaticamente pelo banco  */
+
+
     public void cadastrar(Produto p) throws ClassNotFoundException, SQLException {
         Connection con = Conexao.getConexao();
+
+
         /* PreparedStatement com parâmetros "?" proteção contra SQL Injection */
         PreparedStatement comando = con.prepareStatement(
             "insert into produtos (nome, descricao, categoria, marca, codigo_barras, " +
             "preco_compra, preco_venda, fornecedor, quantidade_estoque, " +
             "quantidade_minimo, data_validade, peso) values (?,?,?,?,?,?,?,?,?,?,?,?)"
         );
+
+        
         /* Cada "?" recebe o valor correspondente do objeto Produto */
         comando.setString(1, p.getNome());
         comando.setString(2, p.getDescricao());
